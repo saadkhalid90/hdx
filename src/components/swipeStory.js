@@ -4,9 +4,9 @@ import needle from "./../resources/approach/Needle.png";
 import skinMuscle from "./../resources/approach/SkinMuscle.png";
 import styles from "./css-modules/swipeStory.module.css";
 
-const SwipeStory = ({ step, stepData, stepSetter }) => {
+const SwipeStory = ({ step, stepData, stepSetter, parentRef, syringeRef }) => {
   return (
-    <section className={styles.story_contain}>
+    <section ref={parentRef} className={styles.story_contain}>
       <div className={styles.story_left}>
         <div
           className={styles.hand_contain}
@@ -15,6 +15,7 @@ const SwipeStory = ({ step, stepData, stepSetter }) => {
           }}
         >
           <img
+            ref={syringeRef}
             className={`${styles.syringe} ${styles[`syringe_${step}`]}`}
             src={syringe}
           />
