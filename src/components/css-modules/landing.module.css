@@ -1,0 +1,58 @@
+.landingContain {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.landingTextContain {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  width: 60%;
+  padding-left: 100px;
+  padding-bottom: 100px;
+}
+
+.landingTitleContain {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.landingTitleContain::before {
+  content: '';
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: #F3BE6C;
+  opacity: 0.3;
+  border-radius: 15px;
+  transform: rotate(45deg) translateX(20px);
+  z-index: 1;
+}
+
+.landingTitle {
+  text-transform: uppercase;
+  font-size: 3rem;
+  color: #fff;
+  margin: 25px 0px;
+  z-index: 2;
+}
+
+.landingSubtitleContain {
+  position: relative;
+}
+
+.landingSubtitleContain::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 8px;
+  background-color: #F3BE6C;
+  border-radius: 3px;
+}

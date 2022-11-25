@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: loveloLight;
+  src: url(./resources/fonts/Lovelo/Lovelo\ Black.otf) format("opentype");
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loveloLightTxt {
+  font-family: loveloLight;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.latoTxt {
+  font-family: "Lato", sans-serif;
+}
+
+.white {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.paraInv {
+  color: white;
+  font-size: 1.2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.landingSubtitle {
+  color: #f3be6c;
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.size_1rem {
+  font-size: 1rem;
+}
+
+.size_1-1rem {
+  font-size: 1.1rem;
+}
+
+.bottom_margin_15px {
+  margin-bottom: 15px;
+}
+
+.Mui-focused {
+  color: #f3be6c !important;
+}
+
+.Mui-focused fieldset {
+  border-color: #f3be6c !important;
+}
+
+.MuiOutlinedInput-root:hover fieldset {
+  border-color: #f3be6c !important;
+}
+
+.MuiInput-underline:hover::before {
+  border-bottom-color: #f3be6c !important;
+}
+
+.MuiInput-underline:hover::after {
+  border-bottom-color: #f3be6c !important;
+}
+
+

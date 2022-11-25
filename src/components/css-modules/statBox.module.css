@@ -1,0 +1,49 @@
+.statBox_contain {
+  width: 100vw;
+  padding-top: 100px;
+  padding-bottom: 70px;
+  padding-left: 200px;
+  padding-right: 200px;
+  background-color: #425563;
+  background-image: url('../../resources/hdx_cell_logo.png');
+  background-size: 400px auto;
+  background-repeat: no-repeat;
+  background-position: -10px center;
+}
+
+.stat_intro {
+  margin: 0px;
+  padding-top: 16px;
+  padding-bottom: 35px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.stat_desc {
+  color: #F3BE6C;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.statItem {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+.stat {
+  font-size: 2rem;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-family: loveloLight;
+  color: #F3BE6C;
+  font-weight: bold;
+}
+.statType {
+  margin: 0px;
+  font-size: 0.9rem;
+  color: white;
+}

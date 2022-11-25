@@ -1,0 +1,31 @@
+.introContain {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: #28333E;
+}
+
+.introContain::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 10px;
+  background-color: #F3BE6C;
+}
+
+.textContain {
+  padding: 100px 200px;
+}
+
+.carContain {
+  background-color:  #F3BE6C;
+  margin: 25px 100px;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  border-radius: 10px;
+}

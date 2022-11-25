@@ -1,0 +1,38 @@
+.iconRowContain {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+
+.iconItemContain {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-right: 50px;
+}
+
+.iconImg {
+  width: 80px;
+}
+
+.iconDesc {
+  position: relative;
+  z-index: 2;
+  transform: translateX(25px);
+}
+
+.iconDesc::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 18px;
+  width: 18px;
+  background-color: #F3BE6C;
+  border-radius: 2px;
+  transform: translateX(-25px) rotate(45deg) ;
+  z-index: 1;
+}
+

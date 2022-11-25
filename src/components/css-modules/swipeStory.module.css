@@ -1,0 +1,126 @@
+.story_contain {
+  background-color: #28333e;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  color: white;
+  position: relative;
+}
+
+.story_contain::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 10px;
+  background-color: #f3be6c;
+}
+
+.story_left,
+.story_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.story_left {
+  flex-basis: 55%;
+}
+
+.story_right {
+  flex-basis: 45%;
+  margin-bottom: 100px;
+}
+
+.hand_contain,
+.muscle_contain {
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.hand_contain {
+  width: 100%;
+  height: calc(55vw * 0.6665);
+}
+
+.muscle_contain {
+  width: 60%;
+  height: calc(45vw * 0.5191 * 0.6);
+}
+
+.step_contain {
+  display: flex;
+  margin: 20px 80px;
+}
+
+.step_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 10px;
+  border-right: dashed 1px white;
+  cursor: pointer;
+}
+
+.step_number {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.step_desc {
+  margin-left: 10px;
+}
+
+.syringe,
+.needle {
+  position: absolute;
+}
+
+.syringe {
+  width: 6%;
+  left: 18%;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.syringe_1 {
+  transform: rotate(45deg);
+  top: -20%;
+}
+
+.syringe_2 {
+  transform: rotate(0deg);
+  top: 16%;
+}
+
+.syringe_3 {
+  transform: rotate(0deg);
+  top: 18.5%;
+}
+
+.needle {
+  width: 10%;
+  left: 45%;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.needle_1 {
+  top: -120%;
+}
+
+.needle_2 {
+  top: -45%;
+}
+
+.needle_3 {
+  top: -17%;
+}
