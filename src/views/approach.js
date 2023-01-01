@@ -1,11 +1,13 @@
 import Landing from "../components/landing";
 import SwipeStory from "../components/swipeStory";
+import swipe_styles from "../components/css-modules/swipeStory.module.css";
 import Footer from "../components/footer";
 import styles from "./css-modules/home.module.css";
 import approachBG from "../resources/landing/landingBG-2.jpg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import VideoAndContent from "../components/videoAndContent";
 import handVid from "./../resources/handVideo.mp4";
+import detectMouseWheelDirection from '../utils.js';
 
 const stepDescs = [
   "The outer sensors send electrical current through out. When thee needle is in the air, current can’t flow, and therefore the resistance measured is very high.",
@@ -15,10 +17,33 @@ const stepDescs = [
 
 const Approach = ({}) => {
   const [step, setStep] = useState(1);
+  const [animate, setAnimate] = useState(false);
+
+  const swipeRef = useRef();
+  const syringeRef = useRef();
+  const needleRef = useRef();
+  const step1Ref = useRef();
+  const step2Ref = useRef();
+  const step3Ref = useRef();
+
 
   useEffect(() => {
-    console.log(step);
-  }, [step]);
+    scrollState();
+  }, []);
+
+  const scrollState = () => {
+    window.onwheel = function(e) {
+      if (window.scrollY > swipeRef.current.getBoundingClientRect().top + window.innerHeight) {
+        if (!syringeRef.current.classList.contains(swipe_styles.syringe_animate)) {
+          syringeRef.current.classList.add(swipe_styles.syringe_animate);
+          needleRef.current.classList.add(swipe_styles.needle_animate);
+          step1Ref.current.classList.add(swipe_styles.step_one_animate);
+          step2Ref.current.classList.add(swipe_styles.step_two_animate);
+          step3Ref.current.classList.add(swipe_styles.step_three_animate);
+        }
+      }
+    }
+  }
 
   return (
     <div className={styles.home_contain}>
@@ -34,7 +59,7 @@ const Approach = ({}) => {
             duration of the test.
           </p>
         </Landing>
-        <SwipeStory step={step} stepData={stepDescs} stepSetter={setStep} />
+        <SwipeStory step={step} stepData={stepDescs} stepSetter={setStep} parentRef={swipeRef} syringeRef={syringeRef} needleRef={needleRef} step1Ref={step1Ref} step2Ref={step2Ref} step3Ref={step3Ref}/>
         <VideoAndContent orientation="right" vid={handVid} bgCol={`#28333e`}>
           <p className={`${styles.content_para} latoTxt white`}>
             Today, millions of people suffer from debilitating diseases
