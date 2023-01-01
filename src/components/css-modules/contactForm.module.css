@@ -13,3 +13,55 @@
 .message {
   margin-top: 20px;
 }
+
+.flexed_buttons {
+  display: flex;
+  justify-content: space-between;
+}
+ 
+.submit_button {
+  background-color: #F3BE6C;
+  padding: 10px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.submit_button > p {
+  margin: 0px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.social_contain {
+  background-color: #F3BE6C;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.social_icon {
+  margin: 0px 4px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.social_icon:hover {
+  transform: scale(1.2);
+}
+
+.status {
+  font-size: 12px;
+  margin: 0px;
+  color: white;
+}
+
+.status_contain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40px;
+}
