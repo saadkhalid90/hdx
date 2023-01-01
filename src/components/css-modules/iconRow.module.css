@@ -19,7 +19,6 @@
 
 .iconDesc {
   position: relative;
-  z-index: 2;
   transform: translateX(25px);
 }
 
@@ -33,6 +32,5 @@
   background-color: #F3BE6C;
   border-radius: 2px;
   transform: translateX(-25px) rotate(45deg) ;
-  z-index: 1;
 }
 

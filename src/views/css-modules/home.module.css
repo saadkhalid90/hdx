@@ -4,16 +4,48 @@
 
 .body {
   position: relative;
+  z-index: 2;
 }
 
 .home {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-.footer {
+.bottom_stick {
   position: sticky;
   bottom: 0px;
-  z-index: -1;
+  left: 0px;
+  z-index: 0;
+}
+
+.submitAndSocials {
+  margin: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.submitButton {
+  background-color: #F3BE6C;
+  padding: 10px 40px;
+  border-radius: 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.socialsRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  font-size: 1.2rem;
+  color: black;
+  background-color: #F89D6D;
+  border-radius: 20px;
+}
+
+.socialsRow * {
+  margin: 5px;
+  cursor: pointer;
 }
 

@@ -54,24 +54,3 @@ html {
   margin-bottom: 15px;
 }
 
-.Mui-focused {
-  color: #f3be6c !important;
-}
-
-.Mui-focused fieldset {
-  border-color: #f3be6c !important;
-}
-
-.MuiOutlinedInput-root:hover fieldset {
-  border-color: #f3be6c !important;
-}
-
-.MuiInput-underline:hover::before {
-  border-bottom-color: #f3be6c !important;
-}
-
-.MuiInput-underline:hover::after {
-  border-bottom-color: #f3be6c !important;
-}
-
-

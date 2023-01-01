@@ -1,0 +1,33 @@
+.demoForm {
+  margin-top: 50px;
+}
+
+
+.demoFormHeader {
+  color: #28333E;
+  font-size: 1.05rem;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+.formRow *{
+  flex-grow: 1;
+}
+
+.submitButton {
+  background-color: #28333E;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  flex-grow: 0;
+  flex-basis: 20%;
+  text-align: center;
+  margin-left: 20px;
+  cursor: pointer;
+}

@@ -43,7 +43,7 @@ const About = ({}) => {
           </p>
         </PhotoAndContent>
       </div>
-      <div className={styles.footer}>
+      <div className={styles.bottom_stick}>
         <Footer />
       </div>
     </div>

@@ -1,6 +1,7 @@
 import Landing from "../components/landing";
 import Intro from "../components/intro";
 import PhotoAndContent from "../components/photoAndContent";
+import DemoForm from "../components/demoForm";
 import IconRow from "../components/iconRow";
 import StatBox from "../components/statBox";
 import Footer from "../components/footer";
@@ -39,8 +40,13 @@ const Home = ({}) => {
             compositional data of the nerve and muscles while giving the ability
             to track disease and effects of therapy.
           </p>
+          <DemoForm />
         </PhotoAndContent>
-        <StatBox />
+        <div className={styles.bottom_stick}>
+          <StatBox />
+        </div>
+      </div>
+      <div className={styles.body}>
         <PhotoAndContent orientation="left" bgImg={hdx_2}>
           <p className={`${styles.content_para} latoTxt`}>
             Symptoms of nerve and muscle disorders impact our day-to-day life.
@@ -51,9 +57,9 @@ const Home = ({}) => {
           </p>
           <IconRow iconsArr={iconsArr} />
         </PhotoAndContent>
-      </div>
-      <div className={styles.footer}>
-        <Footer />
+        <div className={styles.bottom_stick}>
+          <Footer />
+        </div>
       </div>
     </div>
   );

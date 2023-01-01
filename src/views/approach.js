@@ -48,7 +48,7 @@ const Approach = ({}) => {
           </p>
         </VideoAndContent>
       </div>
-      <div className={styles.footer}>
+      <div className={styles.bottom_stick}>
         <Footer />
       </div>
     </div>
