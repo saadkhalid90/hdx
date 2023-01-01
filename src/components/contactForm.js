@@ -13,7 +13,6 @@ import { FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 const ContactForm = ({}) => {
-
   const [fName, setFName] = useState('');
   const [lName, setLName] = useState('');
   const [subject, setSubject] = useState('');
@@ -181,9 +180,10 @@ const ContactForm = ({}) => {
         />
       </div>
 
-
-      {incompleteErr && <Fade in={true}><p className={styles.status}>Failed to submit. Please make sure all information is provided and try again</p></Fade>}
-      {successFul && <Fade in={true}><p className={styles.status}>Thankyou for reaching out to us. If you have further inquiries feel free to reach out to us at info@haystack-dx.com</p></Fade>}
+      <div className={styles.status_contain}>
+        {incompleteErr && <Fade in={true}><p className={styles.status}>Failed to submit. Please make sure all information is provided and try again</p></Fade>}
+        {successFul && <Fade in={true}><p className={styles.status}>Thankyou for reaching out to us. If you have any further inquiries feel free to reach out to us at info@haystack-dx.com</p></Fade>}
+      </div>
 
       <div className={styles.flexed_buttons}>
         <div onClick={() => submitContactForm()} role="button" aria-pressed="false" tabindex="0" className={styles.submit_button}>
@@ -191,7 +191,12 @@ const ContactForm = ({}) => {
         </div>
 
         <div className={styles.social_contain}>
-
+          <FaInstagram className={styles.social_icon} />
+          <FaFacebookF className={styles.social_icon} />
+          <FaTwitter className={styles.social_icon} />
+          <FaYoutube className={styles.social_icon} />
+          <FaLinkedin className={styles.social_icon} />
+          <MdEmail className={styles.social_icon} />
         </div>
       </div>
     </div>
