@@ -20,17 +20,6 @@ const Contact = ({}) => {
       <div className={styles.body}>
         <Landing titleText="Contact" bgImg={contactBG}>
           <ContactForm />
-          <div className={styles.submitAndSocials}>
-            <div className={styles.submitButton}>Submit</div>
-            <div className={styles.socialsRow}>
-              <FaInstagram />
-              <FaFacebookF />
-              <FaYoutube />
-              <FaLinkedin />
-              <FaTwitter />
-              <HiMail />
-            </div>
-          </div>
         </Landing>
         <GoogleMap />
       </div>

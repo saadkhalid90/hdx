@@ -1,81 +1,79 @@
 import TextField from "@mui/material/TextField";
 import { style } from "@mui/system";
 import styles from "./css-modules/contactForm.module.css";
-import { useEffect, useState } from 'react';
-import * as emailjs from 'emailjs-com';
+import { useEffect, useState } from "react";
+import * as emailjs from "emailjs-com";
 import Fade from "@mui/material/Fade";
 
 const ContactForm = ({}) => {
-
-  const [fName, setFName] = useState('');
-  const [lName, setLName] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
   const [disableInputs, setDisableInputs] = useState(false);
   const [incompleteErr, setIncompleteErr] = useState(false);
   const [successFul, setSuccessFul] = useState(false);
 
   function setValueState(event, id) {
-    if (id === 'message') {
+    if (id === "message") {
       setMessage(event.target.value);
-    }
-    else if (id === 'subject') {
+    } else if (id === "subject") {
       setSubject(event.target.value);
-    }
-    else if (id === 'fname') {
+    } else if (id === "fname") {
       setFName(event.target.value);
-    }
-    else if (id === 'lname') {
+    } else if (id === "lname") {
       setLName(event.target.value);
     }
   }
 
   useEffect(() => {
-    emailjs.init('xrS15Rz9UYNUR-bpr');
+    emailjs.init("xrS15Rz9UYNUR-bpr");
   }, []);
 
-
   function submitContactForm() {
-    if (message === '' || subject === '' || fName === '' || lName === '') {
+    if (message === "" || subject === "" || fName === "" || lName === "") {
       setIncompleteErr(true);
       setSuccessFul(false);
-    }
-    else {
+    } else {
       setDisableInputs(true);
       let templateParams = {
-        from_name: fName + ' ' + lName,
-        subject: subject, 
+        from_name: fName + " " + lName,
+        subject: subject,
         message: message,
-      }
+      };
       sendEmail(templateParams);
     }
   }
 
   function resetForm() {
-    setMessage('');
-    setSubject('');
-    setFName('');
-    setLName('');
+    setMessage("");
+    setSubject("");
+    setFName("");
+    setLName("");
   }
 
   function sendEmail(templateParams) {
-    emailjs.send(
-      'service_8c2zize',
-      'template_ftl2lma',
-      templateParams,
-      'xrS15Rz9UYNUR-bpr',
-    ).then(function(response) {
+    emailjs
+      .send(
+        "service_8c2zize",
+        "template_ftl2lma",
+        templateParams,
+        "xrS15Rz9UYNUR-bpr"
+      )
+      .then(
+        function (response) {
           resetForm();
           setIncompleteErr(false);
           setSuccessFul(true);
           setDisableInputs(false);
-    }, function(error) {
+        },
+        function (error) {
           setIncompleteErr(true);
           setSuccessFul(false);
           setDisableInputs(false);
-    });
+        }
+      );
   }
-
 
   return (
     <div className={styles.formContain} style={{ marginLeft: "20px" }}>
@@ -89,11 +87,15 @@ const ContactForm = ({}) => {
             label: { color: "white" },
             "& .MuiInput-underline::before": { borderBottomColor: "white" },
             "& .MuiInput-underline::after": { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::before" : { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" }
+            "&:hover .MuiInput-underline::before": {
+              borderBottomColor: "white",
+            },
+            "&:hover .MuiInput-underline::after": {
+              borderBottomColor: "white",
+            },
           }}
-          onChange={(event) => setValueState(event, 'fname')} 
-          required 
+          onChange={(event) => setValueState(event, "fname")}
+          required
           disabled={disableInputs}
         />
         <TextField
@@ -105,11 +107,15 @@ const ContactForm = ({}) => {
             label: { color: "white" },
             "& .MuiInput-underline::before": { borderBottomColor: "white" },
             "& .MuiInput-underline::after": { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::before" : { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" }
+            "&:hover .MuiInput-underline::before": {
+              borderBottomColor: "white",
+            },
+            "&:hover .MuiInput-underline::after": {
+              borderBottomColor: "white",
+            },
           }}
-          onChange={(event) => setValueState(event, 'lname')} 
-          required 
+          onChange={(event) => setValueState(event, "lname")}
+          required
           disabled={disableInputs}
         />
       </div>
@@ -123,11 +129,15 @@ const ContactForm = ({}) => {
             label: { color: "white" },
             "& .MuiInput-underline::before": { borderBottomColor: "white" },
             "& .MuiInput-underline::after": { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::before" : { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" }
+            "&:hover .MuiInput-underline::before": {
+              borderBottomColor: "white",
+            },
+            "&:hover .MuiInput-underline::after": {
+              borderBottomColor: "white",
+            },
           }}
-          onChange={(event) => setValueState(event, 'subject')} 
-          required 
+          onChange={(event) => setValueState(event, "subject")}
+          required
           disabled={disableInputs}
         />
       </div>
@@ -157,28 +167,38 @@ const ContactForm = ({}) => {
               },
             },
           }}
-          onChange={(event) => setValueState(event, 'message')} 
-          required 
+          onChange={(event) => setValueState(event, "message")}
+          required
           disabled={disableInputs}
         />
       </div>
 
-
-      {incompleteErr && <Fade in={true}><p className={styles.status}>Failed to submit. Please make sure all information is provided and try again</p></Fade>}
-      {successFul && <Fade in={true}><p className={styles.status}>Thankyou for reaching out to us. If you have further inquiries feel free to reach out to us at info@haystack-dx.com</p></Fade>}
+      {incompleteErr && (
+        <Fade in={true}>
+          <p className={styles.status}>
+            Failed to submit. Please make sure all information is provided and
+            try again
+          </p>
+        </Fade>
+      )}
+      {successFul && (
+        <Fade in={true}>
+          <p className={styles.status}>
+            Thankyou for reaching out to us. If you have further inquiries feel
+            free to reach out to us at info@haystack-dx.com
+          </p>
+        </Fade>
+      )}
 
       <div className={styles.flexed_buttons}>
         <button className={styles.submit_button}>
           <p>Submit</p>
         </button>
 
-        <div className={styles.social_contain}>
-
-        </div>
+        <div className={styles.social_contain}></div>
       </div>
     </div>
   );
 };
-
 
 export default ContactForm;
