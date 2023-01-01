@@ -53,7 +53,7 @@ const Footer = ({}) => {
         <HiMail />
       </div>
       <p className={styles.copyright_info}>
-        Copyright 2022 Haystack Diagnostics. All rights reserved.{" "}
+        Copyright {new Date().getFullYear()} Haystack Diagnostics. All rights reserved.{" "}
       </p>
     </section>
   );

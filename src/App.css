@@ -74,4 +74,17 @@ html {
   border-bottom-color: #f3be6c !important;
 }
 
+.MuiInputLabel-root.Mui-disabled {
+  color: #e0e0e0 !important;
+}
+
+.MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(255 255 255 / 78%) !important;
+}
+
+.MuiInputBase-root.Mui-disabled, .MuiOutlinedInput-input.Mui-disabled {
+  -webkit-text-fill-color: rgb(255 255 255 / 58%) !important;
+}
+
+
 

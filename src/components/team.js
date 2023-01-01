@@ -49,6 +49,15 @@ const Team = ({}) => {
           </div>
         </div>
       </div>
+
+      <div className={styles.teamBox}>
+        <h3 className={`${styles.teamHeader} loveloLightTxt`}>Scientific Advisory Board</h3>
+        <div className={styles.teamRows}>
+          <div className={styles.teamRow}>
+            <h4 className={styles.teamMember}>Jeremy Shefner, M.D.</h4>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

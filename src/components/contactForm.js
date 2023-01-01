@@ -14,7 +14,7 @@ import { MdEmail } from "react-icons/md";
 
 const ContactForm = ({}) => {
   const [fName, setFName] = useState('');
-  const [lName, setLName] = useState('');
+  const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [disableInputs, setDisableInputs] = useState(false);
@@ -31,8 +31,8 @@ const ContactForm = ({}) => {
     else if (id === 'fname') {
       setFName(event.target.value);
     }
-    else if (id === 'lname') {
-      setLName(event.target.value);
+    else if (id === 'email') {
+      setEmail(event.target.value);
     }
   }
 
@@ -40,20 +40,33 @@ const ContactForm = ({}) => {
     emailjs.init('xrS15Rz9UYNUR-bpr');
   }, []);
 
+  function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
 
   function submitContactForm() {
-    if (message === '' || subject === '' || fName === '' || lName === '') {
+    if (message === '' || subject === '' || fName === '' || email === '') {
       setIncompleteErr(true);
       setSuccessFul(false);
     }
     else {
       setDisableInputs(true);
-      let templateParams = {
-        from_name: fName + ' ' + lName,
-        subject: subject, 
-        message: message,
+      if (validateEmail(email)) {
+        let templateParams = {
+          from_name: fName,
+          email: email,
+          subject: subject, 
+          message: message,
+        }
+        sendEmail(templateParams);
       }
-      sendEmail(templateParams);
+      else {
+        setIncompleteErr(true);
+        setSuccessFul(false);
+        setDisableInputs(false);
+      }
     }
   }
 
@@ -61,7 +74,7 @@ const ContactForm = ({}) => {
     setMessage('');
     setSubject('');
     setFName('');
-    setLName('');
+    setEmail('');
   }
 
   function sendEmail(templateParams) {
@@ -88,7 +101,7 @@ const ContactForm = ({}) => {
       <div className={styles.formRow}>
         <TextField
           id="standard-basic"
-          label="First Name"
+          label="Name"
           variant="standard"
           sx={{
             input: { color: "white" },
@@ -104,7 +117,7 @@ const ContactForm = ({}) => {
         />
         <TextField
           id="standard-basic"
-          label="Last Name"
+          label="Email"
           variant="standard"
           sx={{
             input: { color: "white" },
@@ -114,7 +127,7 @@ const ContactForm = ({}) => {
             "&:hover .MuiInput-underline::before" : { borderBottomColor: "white" },
             "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" }
           }}
-          onChange={(event) => setValueState(event, 'lname')} 
+          onChange={(event) => setValueState(event, 'email')} 
           required 
           disabled={disableInputs}
         />
@@ -130,7 +143,7 @@ const ContactForm = ({}) => {
             "& .MuiInput-underline::before": { borderBottomColor: "white" },
             "& .MuiInput-underline::after": { borderBottomColor: "white" },
             "&:hover .MuiInput-underline::before" : { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" }
+            "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" },
           }}
           onChange={(event) => setValueState(event, 'subject')} 
           required 
@@ -170,8 +183,8 @@ const ContactForm = ({}) => {
       </div>
 
       <div className={styles.status_contain}>
-        {incompleteErr && <Fade in={true}><p className={styles.status}>Failed to submit. Please make sure all information is provided and try again</p></Fade>}
-        {successFul && <Fade in={true}><p className={styles.status}>Thankyou for reaching out to us. If you have any further inquiries feel free to reach out to us at info@haystack-dx.com</p></Fade>}
+        {incompleteErr && <Fade in={true}><p className={styles.status}>Failed to submit. Please make sure all information is provided - email is correctly formatted - and try again</p></Fade>}
+        {successFul && <Fade in={true}><p className={styles.status}>Thankyou for reaching out to us. We will reach out to you soon.</p></Fade>}
       </div>
 
       <div className={styles.flexed_buttons}>
