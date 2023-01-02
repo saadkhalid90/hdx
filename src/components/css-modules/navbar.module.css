@@ -57,3 +57,17 @@
     font-size: 0.80rem;
   }
 }
+
+@media screen and  (max-width: 40em){
+  .navContain {
+    padding: 30px 40px;
+  }
+
+  .logo {
+    width:200px;
+  }
+
+  .navButtons {
+    display: none;
+  }
+}

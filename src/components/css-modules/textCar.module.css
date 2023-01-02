@@ -13,3 +13,9 @@
     font-size: 1.4rem;
   }
 }
+
+@media screen and (max-width: 40em){
+  .carH3 {
+    font-size: 1.1rem;
+  }
+}

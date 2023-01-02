@@ -40,9 +40,6 @@
 
 .footerInfoItemText {
   font-size: 1.1rem;
-}
-
-.footerInfoItemText {
   margin: 0px;
   padding-left: 10px;
 }
@@ -132,5 +129,50 @@
 
   .copyright_info {
     font-size: 0.70rem;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .footerContain {
+    height: 480px;
+  }
+  .footerLogo {
+    width:160px;
+  }
+  .footerInfoRow {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footerSocialsRow {
+    width: 42%;
+    margin-top: 30px;
+  }
+
+  .footerInfoItem {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .footerInfoItemText {
+    font-size: 0.85rem;
+  }
+
+  .footerInfoItemIconContain {
+    font-size: 0.9em;
+  }
+
+  .footerSocialsRow svg {
+    margin: 8px;
+  }
+
+  .copyright_info {
+    font-size: 0.60rem;
   }
 }

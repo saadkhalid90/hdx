@@ -26,3 +26,10 @@
     padding: 35px;
   }
 }
+
+@media screen and (max-width: 40em) {
+  .map_container {
+    height: 320px;
+    padding: 25px;
+  }
+}

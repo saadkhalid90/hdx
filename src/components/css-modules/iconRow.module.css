@@ -46,3 +46,13 @@
   }
 }
 
+@media screen and (max-width: 40em) {
+  .iconImg {
+    width: 50px;
+  }
+
+  .iconDesc {
+    font-size: 0.9rem;
+  }
+}
+

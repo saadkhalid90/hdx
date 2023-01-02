@@ -79,3 +79,25 @@
     margin-bottom: 5px;
   }
 }
+
+@media screen and (max-width: 40em) {
+  .statBox_contain {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .stat_intro {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .stat {
+    font-size: 1.1rem;
+    margin-bottom: 3px;
+  }
+
+  .statType {
+    font-size: 0.7rem;
+  }
+}

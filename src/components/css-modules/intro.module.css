@@ -60,3 +60,23 @@
     border-radius: 8px;
   }
 }
+
+@media screen and (max-width: 40em) {
+  .introContain {
+    height: auto;
+    padding-bottom: 50px;
+  }
+
+  .textContain {
+    padding: 50px 50px;
+  }
+
+  .carContain {
+    margin: 0px 50px;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 6px;
+  }
+}

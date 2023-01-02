@@ -14,11 +14,13 @@ const VideoAndContent = ({ orientation, vid, children, bgCol = "white" }) => {
         </div>
       )}
       <div
-        className={styles.contentContain}
-        style={{
-          paddingLeft: orientation === "left" ? "30px" : "100px",
-          paddingRight: orientation === "left" ? "100px" : "30px",
-        }}
+        className={
+          `${styles.contentContain} ${
+            orientation === "left"
+              ? styles.cont_orient_left
+              : styles.cont_orient_left
+          }`
+        }
       >
         {children}
       </div>

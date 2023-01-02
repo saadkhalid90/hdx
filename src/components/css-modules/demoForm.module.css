@@ -50,3 +50,12 @@
     font-size: 0.85em;
   }
 }
+
+@media screen and (max-width: 40em) {
+  .demoFormHeader {
+    font-size: 1rem;
+  }
+  .submitButton {
+    font-size: 0.80em;
+  }
+}

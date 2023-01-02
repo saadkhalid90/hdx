@@ -91,3 +91,37 @@
     font-size: 0.9rem;
   }
 }
+
+@media screen and (max-width: 40em) {
+  .team_contain {
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .team_intro {
+    font-size: 0.9rem;
+  }
+
+  .teamHeader {
+    font-size: 1.4rem;
+  }
+
+  .teamMember {
+    font-size: 1rem;
+    margin: 5px 0px;
+  }
+
+  .teamDesig {
+    font-size: 0.85rem;
+    margin: 2px 0px;
+  }
+
+  .teamRow {
+    width: 100%;
+  }
+
+  .separator {
+    margin: 5px 5px;
+  }
+}
