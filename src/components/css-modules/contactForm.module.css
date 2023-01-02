@@ -17,6 +17,7 @@
 .flexed_buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
  
 .submit_button {
@@ -46,7 +47,7 @@
 .social_icon {
   margin: 0px 4px;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.1s;
 }
 
 .social_icon:hover {
@@ -64,4 +65,50 @@
   flex-direction: column;
   justify-content: center;
   height: 40px;
+}
+
+@media screen and (min-width: 900px) and (max-height: 650px) {
+  .formRow {
+    height: 50px;
+  }
+  
+  .formRow div {
+    margin-bottom: 3px;
+  }
+
+  .submit_button {
+    padding: 8px 25px;
+  }
+  
+  .submit_button > p {
+    font-size: 13px;
+  }
+
+  .social_contain {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-height: 500px) {
+  .formRow {
+    height: 45px;
+  }
+  
+  .formRow div {
+    margin-bottom: 2px;
+  }
+
+  .submit_button {
+    padding: 7px 22px;
+  }
+  
+  .submit_button > p {
+    font-size: 12px;
+  }
+
+  .social_contain {
+    padding: 7px 18px;
+    font-size: 0.85rem;
+  }
 }

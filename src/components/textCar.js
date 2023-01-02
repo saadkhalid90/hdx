@@ -20,13 +20,13 @@ export default class TextCar extends Component {
       <div className={`${styles.carRoot} latoTxt`}>
         <Slider {...settings}>
           <div>
-            <h3>Cutting edge technology for neuromuscular assessment</h3>
+            <h3 className={styles.carH3}>Cutting edge technology for neuromuscular assessment</h3>
           </div>
           <div>
-            <h3>Amazing technology for neuromuscular assessment and more</h3>
+            <h3 className={styles.carH3}>Amazing technology for neuromuscular assessment and more</h3>
           </div>
           <div>
-            <h3>Don't be surprised. We have more to offer</h3>
+            <h3 className={styles.carH3}>Don't be surprised. We have more to offer</h3>
           </div>
         </Slider>
       </div>

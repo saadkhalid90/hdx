@@ -1,3 +1,15 @@
-.carRoot {
-  font-size: 1.5rem;
+.carH3 {
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 900px) and (min-height: 650px) {
+  .carH3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-height: 500px) {
+  .carH3 {
+    font-size: 1.4rem;
+  }
 }
