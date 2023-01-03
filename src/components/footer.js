@@ -12,7 +12,7 @@ import { ImLocation } from "react-icons/im";
 
 import styles from "./css-modules/footer.module.css";
 
-const Footer = ({}) => {
+const Footer = ({loadedCommonData}) => {
   return (
     <section className={styles.footerContain}>
       <img className={styles.footerLogo} src={logo} />
@@ -21,13 +21,13 @@ const Footer = ({}) => {
           <div className={styles.footerInfoItemIconContain}>
             <ImLocation />
           </div>
-          <p className={styles.footerInfoItemText}>Haystack Dx, M2D2 110 Canal Street, 4th Floor Lowell, MA 01854</p>
+          <p className={styles.footerInfoItemText}>{loadedCommonData.companyInformation.mainAddress}</p>
         </div>
         <div className={styles.footerInfoItem}>
           <div className={styles.footerInfoItemIconContain}>
             <ImLocation />
           </div>
-          <p className={styles.footerInfoItemText}>Haystack Dx, 1309 Beacon Street, Suite 300 Brookline, MA 02446</p>
+          <p className={styles.footerInfoItemText}>{loadedCommonData.companyInformation.secondaryAddress}</p>
         </div>
       </div>
       <div className={styles.footerInfoRow}>
@@ -35,22 +35,22 @@ const Footer = ({}) => {
           <div className={styles.footerInfoItemIconContain}>
             <FaPhone />
           </div>
-          <p className={styles.footerInfoItemText}>(+1) 617 297 7409</p>
+          <p className={styles.footerInfoItemText}>{loadedCommonData.companyInformation.contactNumber}</p>
         </div>
         <div className={styles.footerInfoItem}>
           <div className={styles.footerInfoItemIconContain}>
             <HiMail />
           </div>
-          <p className={styles.footerInfoItemText}>info@haystack-dx.com</p>
+          <p style={{cursor: 'pointer'}} onClick={() => window.open('mailto:' + loadedCommonData.companyInformation.contactEmail)} className={styles.footerInfoItemText}>{loadedCommonData.companyInformation.contactEmail}</p>
         </div>
       </div>
       <div className={styles.footerSocialsRow}>
-        <FaInstagram />
-        <FaFacebookF />
-        <FaYoutube />
-        <FaLinkedin />
-        <FaTwitter />
-        <HiMail />
+        {loadedCommonData.socialMedia.instagram && <FaInstagram onClick={() => window.open(loadedCommonData.socialMedia.instagram)}/>}
+        {loadedCommonData.socialMedia.facebook && <FaFacebookF onClick={() => window.open(loadedCommonData.socialMedia.facebook)}/>}
+        {loadedCommonData.socialMedia.youtube && <FaYoutube onClick={() => window.open(loadedCommonData.socialMedia.youtube)}/>}
+        {loadedCommonData.socialMedia.linkedIn && <FaLinkedin onClick={() => window.open(loadedCommonData.socialMedia.linkedIn)}/>}
+        {loadedCommonData.socialMedia.twitter && <FaTwitter onClick={() => window.open(loadedCommonData.socialMedia.twitter)}/>}
+        {loadedCommonData.socialMedia.email && <HiMail onClick={() => window.open('mailto:' + loadedCommonData.socialMedia.email)} />}
       </div>
       <p className={styles.copyright_info}>
         Copyright {new Date().getFullYear()} Haystack Diagnostics. All rights reserved.{" "}

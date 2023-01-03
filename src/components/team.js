@@ -1,7 +1,7 @@
 import styles from "./css-modules/team.module.css";
 import rhombusBG from "../resources/rhombus_bg.png";
 
-const Team = ({}) => {
+const Team = ({desc, team, board}) => {
   return (
     <section
       className={styles.team_contain}
@@ -13,49 +13,29 @@ const Team = ({}) => {
       }}
     >
       <p className={`${styles.team_intro} latoTxt`}>
-        Haystack’s team is composed of innovative, experienced individuals with
-        expertise in both basic and clinical research as well as
-        commercialization of medical technology. Our mission is to improve the
-        lives of those suffering from nerve and muscle disorders through better
-        and early detection and monitoring of diseases.
+        {desc}
       </p>
       <div className={styles.teamBox}>
         <h3 className={`${styles.teamHeader} loveloLightTxt`}>Our Team</h3>
         <div className={styles.teamRows}>
-          <div className={styles.teamRow}>
-            <h4 className={styles.teamMember}>Mai Le</h4>
-            <div className={styles.separator} />
-            <p className={styles.teamDesig}>CEO, Co-Founder</p>
-          </div>
-          <div className={styles.teamRow}>
-            <h4 className={styles.teamMember}>Benjamin Sanchez, PHD</h4>
-            <div className={styles.separator} />
-            <p className={styles.teamDesig}>Co-Founder</p>
-          </div>
-          <div className={styles.teamRow}>
-            <h4 className={styles.teamMember}>Seward Rutkove, MD</h4>
-            <div className={styles.separator} />
-            <p className={styles.teamDesig}>Co-Founder</p>
-          </div>
-          <div className={styles.teamRow}>
-            <h4 className={styles.teamMember}>Neil Lupton, PHD</h4>
-            <div className={styles.separator} />
-            <p className={styles.teamDesig}>Co-Founder</p>
-          </div>
-          <div className={styles.teamRow}>
-            <h4 className={styles.teamMember}>Arindam Mukherjee</h4>
-            <div className={styles.separator} />
-            <p className={styles.teamDesig}>Biz Dev</p>
-          </div>
+          {team.length > 0 && team.map((teamMember, index) => {
+            return  <div key={teamMember.name + index} className={styles.teamRow}>
+              <h4 className={styles.teamMember}>{teamMember.title}</h4>
+              <div className={styles.separator} />
+              <p className={styles.teamDesig}>{teamMember.teamMemberData.designation}</p>
+            </div>
+          })}
         </div>
       </div>
 
       <div className={styles.teamBox}>
         <h3 className={`${styles.teamHeader} loveloLightTxt`}>Scientific Advisory Board</h3>
         <div className={styles.teamRows}>
-          <div className={styles.teamRow}>
-            <h4 className={styles.teamMember}>Jeremy Shefner, M.D.</h4>
-          </div>
+          {board.length > 0 && board.map((teamMember, index) => {
+            return  <div key={teamMember.name + index} className={styles.teamRow}>
+              <h4 className={styles.teamMember}>{teamMember.title}</h4>
+            </div>
+          })}
         </div>
       </div>
     </section>

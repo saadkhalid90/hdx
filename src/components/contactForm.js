@@ -10,9 +10,9 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { HiMail } from "react-icons/hi";
 
-const ContactForm = ({}) => {
+const ContactForm = ({loadedCommonData}) => {
   const [fName, setFName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -193,12 +193,12 @@ const ContactForm = ({}) => {
         </div>
 
         <div className={styles.social_contain}>
-          <FaInstagram className={styles.social_icon} />
-          <FaFacebookF className={styles.social_icon} />
-          <FaTwitter className={styles.social_icon} />
-          <FaYoutube className={styles.social_icon} />
-          <FaLinkedin className={styles.social_icon} />
-          <MdEmail className={styles.social_icon} />
+          {loadedCommonData.socialMedia.instagram && <FaInstagram className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.instagram)} />}
+          {loadedCommonData.socialMedia.facebook && <FaFacebookF className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.facebook)}/>}
+          {loadedCommonData.socialMedia.youtube && <FaYoutube className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.youtube)}/>}
+          {loadedCommonData.socialMedia.linkedIn && <FaLinkedin className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.linkedIn)}/>}
+          {loadedCommonData.socialMedia.twitter && <FaTwitter className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.twitter)}/>}
+          {loadedCommonData.socialMedia.email && <HiMail className={styles.social_icon} onClick={() => window.open('mailto:' + loadedCommonData.socialMedia.email)}/>}
         </div>
       </div>
     </div>

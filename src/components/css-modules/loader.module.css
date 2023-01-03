@@ -1,0 +1,48 @@
+.flex_contain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .logo_contain {
+    width: 200px;
+    position: relative;
+  }
+  
+  @keyframes mask_anim {
+    0% {
+      width: 0%;
+    }
+    10% {
+      width: 0%;
+    }
+    50% {
+      width: 100%;
+    }
+    90% {
+      width: 0%;
+    }
+    100% {
+      width: 0%;
+    }
+  }
+  
+  .logo_contain::before {
+    position: absolute;
+    content: "";
+    width: 0%;
+    height: 100%;
+    background-image: url(/src/resources/loader/logo_i.png);
+    background-size: 200px auto;
+    background-position: top left;
+    background-repeat: no-repeat;
+    transform-origin: left;
+    transform: scaleX(1);
+    animation: 3s ease-in-out 0s infinite mask_anim;
+  }
+  
+  .logo {
+    width: 100%;
+  }

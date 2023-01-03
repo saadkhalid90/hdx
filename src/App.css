@@ -29,6 +29,7 @@ html {
 .paraInv {
   color: white;
   font-size: 1.2rem;
+  white-space: pre-line;
 }
 
 .landingSubtitle {
@@ -36,6 +37,7 @@ html {
   margin-left: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
+  white-space: pre-line;
 }
 
 .uppercase {
