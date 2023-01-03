@@ -1,5 +1,6 @@
 .content_para {
   font-size: 1.2rem;
+  white-space: pre-line;
 }
 
 .body {
@@ -16,7 +17,7 @@
   position: sticky;
   bottom: 0px;
   left: 0px;
-  z-index: 0;
+  z-index: 1;
 }
 
 .submitAndSocials {

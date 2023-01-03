@@ -1,13 +1,33 @@
 import styles from "./css-modules/statBox.module.css";
+import { useEffect, useState } from "react";
 
-const StatBox = ({}) => {
+const StatBox = ({statisticsHeading, statisticsHeadingHighlight, stats}) => {
+
+  const [splitArrays, setSplitArrays] = useState([]);
+
+  useEffect(() => {
+    let arr = splitArray(stats.reverse(), 3);
+    if (arr.length > 0) {
+      console.log(arr);
+      setSplitArrays(arr);
+    }
+    console.log(splitArrays);
+  }, []);
+
+  function splitArray(array, pocketLength) {
+    let arr=[];
+    while (array.length > 0) {
+      arr.push(array.splice(0, pocketLength));
+    }
+    return arr;
+  }
+
   return (
     <section className={styles.statBox_contain}>
       <p className={`${styles.stat_intro} latoTxt`}>
-        Diverse group of disorders characterized by muscle and/or nerve
-        dysfunction affects. Neuromuscular disorders affect{" "}
+        {statisticsHeading + " "}
         <span className={styles.stat_desc}>
-          more than 100 million people worldwide
+          {statisticsHeadingHighlight}
         </span>
       </p>
       <div className={styles.statBox}>

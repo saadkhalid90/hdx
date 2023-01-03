@@ -6,16 +6,12 @@ import styles from "./css-modules/home.module.css";
 import approachBG from "../resources/landing/landingBG-2.jpg";
 import { useState, useEffect, useRef } from "react";
 import VideoAndContent from "../components/videoAndContent";
-import handVid from "./../resources/handVideo.mp4";
-import detectMouseWheelDirection from '../utils.js';
+import Loader from '../components/loader';
+import Fade from "@mui/material/Fade";
+import ReactGA from "react-ga4";
+import axios from "axios";
 
-const stepDescs = [
-  "The outer sensors send electrical current through out. When thee needle is in the air, current can’t flow, and therefore the resistance measured is very high.",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "Once the needle is fully inserted into the muscle, the resistance reaches its minimal value.",
-];
-
-const Approach = ({}) => {
+const Approach = ({loadedCommonData, loadedApproachData, setApproachDataLoaded}) => {
   const [step, setStep] = useState(1);
   const [animate, setAnimate] = useState(false);
 
@@ -28,13 +24,41 @@ const Approach = ({}) => {
 
 
   useEffect(() => {
-    scrollState();
+    if (!loadedApproachData) {
+      axios({
+        url: "https://wordpress.haystack-dx.com/graphql",
+        method: "post",
+        data: {
+          query: `
+            query approachPage {
+              approachPageData(id: "cG9zdDo1OA==") {
+                title
+                approachPageContent {
+                  bannerDescription
+                  stepOne
+                  stepThree
+                  stepTwo
+                  videoSectionDescription
+                }
+              }
+            }
+          `,
+        },
+      }).then((result) => {
+        let data = {
+          title: result.data.data.approachPageData.title,
+          pageContent: result.data.data.approachPageData.approachPageContent,
+        }; 
+        setApproachDataLoaded(data);
+        scrollState();
+      });
+    }
   }, []);
 
   const scrollState = () => {
     window.onwheel = function(e) {
       if (window.scrollY > swipeRef.current.getBoundingClientRect().top + window.innerHeight) {
-        if (!syringeRef.current.classList.contains(swipe_styles.syringe_animate)) {
+        if (!needleRef.current.classList.contains(swipe_styles.needle_animate)) {
           syringeRef.current.classList.add(swipe_styles.syringe_animate);
           needleRef.current.classList.add(swipe_styles.needle_animate);
           step1Ref.current.classList.add(swipe_styles.step_one_animate);
@@ -46,37 +70,32 @@ const Approach = ({}) => {
   }
 
   return (
-    <div className={styles.home_contain}>
-      <div className={styles.body}>
-        <Landing titleText="Approach" bgImg={approachBG}>
-          <p className="landingSubtitle size_1-1rem bottom_margin_15px ">
-            Haystack Dx impedance-electromyography technology provides an
-            innovated, AI-powered solution to assess any condition that impacts
-            neuromuscular disorders such as muscular dystrophy, Lou Gehrig’s
-            disease, cachexia and disuse. The unique value that Haystack Dx
-            brings is quantifiable muscle health outcomes for the diagnosis and
-            tracking of patients without changing the clinical procedure or the
-            duration of the test.
-          </p>
-        </Landing>
-        <SwipeStory step={step} stepData={stepDescs} stepSetter={setStep} parentRef={swipeRef} syringeRef={syringeRef} needleRef={needleRef} step1Ref={step1Ref} step2Ref={step2Ref} step3Ref={step3Ref}/>
-        <VideoAndContent orientation="right" vid={handVid} bgCol={`#28333e`}>
-          <p className={`${styles.content_para} latoTxt white`}>
-            Today, millions of people suffer from debilitating diseases
-            affecting their nerves and muscles. Neuromuscular disorders include
-            injury to or disease of a nerve that connects to a muscle, diseases
-            as a result of abnormalities of the muscles, and diseases that
-            impact the transmission of information from the nervous system to a
-            muscle. Diagnosis and therapeutic tracking of people with
-            neuromuscular disorder is critical in ensuring their cure and
-            wellbeing.
-          </p>
-        </VideoAndContent>
-      </div>
-      <div className={styles.bottom_stick}>
-        <Footer />
-      </div>
-    </div>
+    <>
+    {!loadedApproachData || !loadedCommonData ? 
+      <Loader/>
+      :
+      <Fade in={true}>
+        <div className={styles.home_contain}>
+          <div className={styles.body}>
+            <Landing titleText="Approach" bgImg={approachBG}>
+              <p className="landingSubtitle size_1-1rem bottom_margin_15px ">
+                {loadedApproachData.pageContent.bannerDescription}
+              </p>
+            </Landing>
+            <SwipeStory pageContent={loadedApproachData.pageContent} step={step} parentRef={swipeRef} syringeRef={syringeRef} needleRef={needleRef} step1Ref={step1Ref} step2Ref={step2Ref} step3Ref={step3Ref}/>
+            <VideoAndContent orientation="right" vid={'https://res.cloudinary.com/dejxxzoeu/video/upload/v1672637110/handVideo_ga8wlb.mp4'} bgCol={`#28333e`}>
+              <p className={`${styles.content_para} latoTxt white`}>
+                {loadedApproachData.pageContent.videoSectionDescription}
+              </p>
+            </VideoAndContent>
+          </div>
+          <div className={styles.bottom_stick}>
+            <Footer loadedCommonData={loadedCommonData}/>
+          </div>
+        </div>
+      </Fade>
+    }
+    </>
   );
 };
 

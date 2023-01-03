@@ -4,7 +4,7 @@ import needle from "./../resources/approach/Needle.png";
 import skinMuscle from "./../resources/approach/SkinMuscle.png";
 import styles from "./css-modules/swipeStory.module.css";
 
-const SwipeStory = ({ step, stepData, stepSetter, parentRef, syringeRef, needleRef, step1Ref, step2Ref, step3Ref }) => {
+const SwipeStory = ({ step, pageContent, parentRef, syringeRef, needleRef, step1Ref, step2Ref, step3Ref }) => {
   return (
     <section ref={parentRef} className={styles.story_contain}>
       <div className={styles.story_left}>
@@ -39,21 +39,21 @@ const SwipeStory = ({ step, stepData, stepSetter, parentRef, syringeRef, needleR
             <div className={styles.step_text}>STEP</div>
             <div className={styles.step_number}>1</div>
           </div>
-          <div className={styles.step_desc}>{stepData[0]}</div>
+          <div className={styles.step_desc}>{pageContent.stepOne}</div>
         </div>
         <div className={styles.step_contain} ref={step2Ref}>
           <div className={styles.step_box}>
             <div className={styles.step_text}>STEP</div>
             <div className={styles.step_number}>2</div>
           </div>
-          <div className={styles.step_desc}>{stepData[1]}</div>
+          <div className={styles.step_desc}>{pageContent.stepTwo}</div>
         </div>
         <div className={styles.step_contain} ref={step3Ref}>
           <div className={styles.step_box}>
             <div className={styles.step_text}>STEP</div>
             <div className={styles.step_number}>3</div>
           </div>
-          <div className={styles.step_desc}>{stepData[2]}</div>
+          <div className={styles.step_desc}>{pageContent.stepThree}</div>
         </div>
       </div>
 

@@ -3,50 +3,94 @@ import PhotoAndContent from "../components/photoAndContent";
 import Team from "../components/team";
 import Footer from "../components/footer";
 import aboutBG from "../resources/landing/landingBG-2.jpg";
-import hdx_3 from "../resources/hdx_3.jpg";
-
 import styles from "./css-modules/home.module.css";
+import Loader from '../components/loader';
+import Fade from "@mui/material/Fade";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
+import axios from "axios";
 
-const About = ({}) => {
+const About = ({loadedCommonData, loadedAboutData, setAboutDataLoaded}) => {
+
+  useEffect(() => {
+    if (!loadedAboutData) {
+      axios({
+        url: "https://wordpress.haystack-dx.com/graphql",
+        method: "post",
+        data: {
+          query: `
+            query aboutPage {
+              aboutPageData(id: "cG9zdDo1Ng==") {
+                title
+                aboutPageContent {
+                  bannerDescription
+                  sectionDescription
+                  sectionImage {
+                    mediaItemUrl
+                  }
+                  teamSectionDescription
+                }
+              }
+              teamMembers {
+                nodes {
+                  teamMemberData {
+                    designation
+                    website
+                  }
+                  title
+                }
+              }
+              advisoryBoardMembers {
+                nodes {
+                  title
+                }
+              }
+            }
+          `,
+        },
+      }).then((result) => {
+        let data = {
+          title: result.data.data.aboutPageData.title,
+          pageContent: result.data.data.aboutPageData.aboutPageContent,
+          team: result.data.data.teamMembers.nodes.reverse(),
+          board: result.data.data.advisoryBoardMembers.nodes.reverse(), 
+        }; 
+        setAboutDataLoaded(data);
+      });
+    }
+  }, []);
+
   return (
-    <div className={styles.home_contain}>
-      <div className={styles.body}>
-        <Landing titleText="About Us" bgImg={aboutBG}>
-          <p className="landingSubtitle size_1-1rem bottom_margin_15px ">
-            Haystack Diagnostics (d.b.a. Haystack Dx) is an early-stage medical
-            device company committed to provide intelligent modern day solution
-            for the diagnosing and monitoring of nerve and muscle diseases that
-            impact millions of people every day.
-          </p>
-          <p className="landingSubtitle size_1-1rem">
-            Our mission is to improve the lives of those suffering from nerve
-            and muscle disorders through better and early detection and
-            monitoring of diseases.
-          </p>
-        </Landing>
-        <Team/>
-        <PhotoAndContent orientation="right" bgImg={hdx_3}>
-          <p className={`${styles.content_para} latoTxt`}>
-            Needle electromyography (EMG) remains a cornerstone of neuromuscular
-            diagnosis. The technique, first applied clinically in the 1940s, is
-            used routinely to assist with the primary diagnosis of many
-            conditions impacting nerve or muscle health, including neurogenic
-            disorders such as radiculopathy and amyotrophic lateral sclerosis
-            (ALS) and primary myopathic disorders, such as inflammatory myositis
-            and critical illness myopathy. However, the technique has one major
-            shortcoming: it relies entirely on the assessment of the active
-            electrical properties of the myofiber membranes: namely, those
-            associated with action potentials. The technique is completely blind
-            to passive volume conduction properties of the muscle tissue, which
-            are greatly altered by myofiber atrophy, intramuscular connective
-            tissue, fat, edema and inflammation.
-          </p>
-        </PhotoAndContent>
+    <>
+    {!loadedAboutData || !loadedCommonData ? 
+      <Loader/>
+      :
+    <Fade in={true}> 
+      <div className={styles.home_contain}>
+        <div className={styles.body}>
+          <Landing titleText={loadedAboutData.title} bgImg={aboutBG}>
+            <p className="landingSubtitle size_1-1rem bottom_margin_15px ">
+              {loadedAboutData.pageContent.bannerDescription}
+            </p>
+          </Landing>
+          <Team
+            desc={loadedAboutData.pageContent.teamSectionDescription}
+            team={loadedAboutData.team}
+            board={loadedAboutData.board}
+          />
+          <PhotoAndContent orientation="right" bgImg={loadedAboutData.pageContent.sectionImage.mediaItemUrl}>
+            <p className={`${styles.content_para} latoTxt`}>
+              {loadedAboutData.pageContent.sectionDescription}
+            </p>
+          </PhotoAndContent>
+        </div>
+        <div className={styles.bottom_stick}>
+          <Footer loadedCommonData={loadedCommonData}/>
+        </div>
       </div>
-      <div className={styles.bottom_stick}>
-        <Footer />
-      </div>
-    </div>
+    </Fade>
+    }
+    </>
   );
 };
 

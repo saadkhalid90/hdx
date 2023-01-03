@@ -18,17 +18,13 @@ export default class TextCar extends Component {
     };
     return (
       <div className={`${styles.carRoot} latoTxt`}>
-        <Slider {...settings}>
-          <div>
-            <h3 className={styles.carH3}>Cutting edge technology for neuromuscular assessment</h3>
-          </div>
-          <div>
-            <h3 className={styles.carH3}>Amazing technology for neuromuscular assessment and more</h3>
-          </div>
-          <div>
-            <h3 className={styles.carH3}>Don't be surprised. We have more to offer</h3>
-          </div>
-        </Slider>
+        {this.props.carousel.length > 0 && <Slider {...settings}>
+          {this.props.carousel.map((text, index) => {
+            return <div>
+              <h3>Cutting edge technology for neuromuscular assessment</h3>
+            </div>
+          })}
+        </Slider>}
       </div>
     );
   }

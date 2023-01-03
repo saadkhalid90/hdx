@@ -10,11 +10,11 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { HiMail } from "react-icons/hi";
 
-const ContactForm = ({}) => {
+const ContactForm = ({loadedCommonData}) => {
   const [fName, setFName] = useState('');
-  const [lName, setLName] = useState('');
+  const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [disableInputs, setDisableInputs] = useState(false);
@@ -28,8 +28,9 @@ const ContactForm = ({}) => {
       setSubject(event.target.value);
     } else if (id === "fname") {
       setFName(event.target.value);
-    } else if (id === "lname") {
-      setLName(event.target.value);
+    }
+    else if (id === 'email') {
+      setEmail(event.target.value);
     }
   }
 
@@ -37,26 +38,41 @@ const ContactForm = ({}) => {
     emailjs.init("xrS15Rz9UYNUR-bpr");
   }, []);
 
+
+  function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+
   function submitContactForm() {
-    if (message === "" || subject === "" || fName === "" || lName === "") {
+    if (message === '' || subject === '' || fName === '' || email === '') {
       setIncompleteErr(true);
       setSuccessFul(false);
     } else {
       setDisableInputs(true);
-      let templateParams = {
-        from_name: fName + " " + lName,
-        subject: subject,
-        message: message,
-      };
-      sendEmail(templateParams);
+      if (validateEmail(email)) {
+        let templateParams = {
+          from_name: fName,
+          email: email,
+          subject: subject, 
+          message: message,
+        }
+        sendEmail(templateParams);
+      }
+      else {
+        setIncompleteErr(true);
+        setSuccessFul(false);
+        setDisableInputs(false);
+      }
     }
   }
 
   function resetForm() {
-    setMessage("");
-    setSubject("");
-    setFName("");
-    setLName("");
+    setMessage('');
+    setSubject('');
+    setFName('');
+    setEmail('');
   }
 
   function sendEmail(templateParams) {
@@ -87,7 +103,7 @@ const ContactForm = ({}) => {
       <div className={styles.formRow}>
         <TextField
           id="standard-basic"
-          label="First Name"
+          label="Name"
           variant="standard"
           sx={{
             input: { color: "white" },
@@ -107,7 +123,7 @@ const ContactForm = ({}) => {
         />
         <TextField
           id="standard-basic"
-          label="Last Name"
+          label="Email"
           variant="standard"
           sx={{
             input: { color: "white" },
@@ -121,8 +137,8 @@ const ContactForm = ({}) => {
               borderBottomColor: "white",
             },
           }}
-          onChange={(event) => setValueState(event, "lname")}
-          required
+          onChange={(event) => setValueState(event, 'email')} 
+          required 
           disabled={disableInputs}
         />
       </div>
@@ -181,8 +197,8 @@ const ContactForm = ({}) => {
       </div>
 
       <div className={styles.status_contain}>
-        {incompleteErr && <Fade in={true}><p className={styles.status}>Failed to submit. Please make sure all information is provided and try again</p></Fade>}
-        {successFul && <Fade in={true}><p className={styles.status}>Thankyou for reaching out to us. If you have any further inquiries feel free to reach out to us at info@haystack-dx.com</p></Fade>}
+        {incompleteErr && <Fade in={true}><p className={styles.status}>Failed to submit. Please make sure all information is provided - email is correctly formatted - and try again</p></Fade>}
+        {successFul && <Fade in={true}><p className={styles.status}>Thankyou for reaching out to us. We will reach out to you soon.</p></Fade>}
       </div>
 
       <div className={styles.flexed_buttons}>
@@ -191,12 +207,12 @@ const ContactForm = ({}) => {
         </div>
 
         <div className={styles.social_contain}>
-          <FaInstagram className={styles.social_icon} />
-          <FaFacebookF className={styles.social_icon} />
-          <FaTwitter className={styles.social_icon} />
-          <FaYoutube className={styles.social_icon} />
-          <FaLinkedin className={styles.social_icon} />
-          <MdEmail className={styles.social_icon} />
+          {loadedCommonData.socialMedia.instagram && <FaInstagram className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.instagram)} />}
+          {loadedCommonData.socialMedia.facebook && <FaFacebookF className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.facebook)}/>}
+          {loadedCommonData.socialMedia.youtube && <FaYoutube className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.youtube)}/>}
+          {loadedCommonData.socialMedia.linkedIn && <FaLinkedin className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.linkedIn)}/>}
+          {loadedCommonData.socialMedia.twitter && <FaTwitter className={styles.social_icon} onClick={() => window.open(loadedCommonData.socialMedia.twitter)}/>}
+          {loadedCommonData.socialMedia.email && <HiMail className={styles.social_icon} onClick={() => window.open('mailto:' + loadedCommonData.socialMedia.email)}/>}
         </div>
       </div>
     </div>
