@@ -46,6 +46,7 @@
 
 .landingSubtitleContain {
   position: relative;
+  font-size: 1rem;
 }
 
 .landingSubtitleContain::before {
@@ -55,4 +56,37 @@
   width: 8px;
   background-color: #F3BE6C;
   border-radius: 3px;
+}
+
+@media screen and (min-width: 900px) and (max-height: 650px) {
+  .landingTitle {
+    font-size: 2.7rem;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-height: 500px) {
+  .landingTitle {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .landingContain {
+    background-position: right;
+  }
+  
+  .landingTextContain {
+    width: 100%;
+    padding-left: 30px;
+    padding-bottom: 50px;
+    padding-right: 30px;
+  }
+
+  .landingTitle {
+    font-size: 2rem;
+  }
+
+  .landingSubtitleContain {
+    font-size: 0.9rem;
+  }
 }

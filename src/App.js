@@ -1,9 +1,8 @@
-
 import './App.css';
 import Home from './views/home';
 import About from './views/about';
-import Contact from './views/contact';
 import Approach from './views/approach';
+import Contact from './views/contact';
 import {Routes, Route} from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState  } from 'react';

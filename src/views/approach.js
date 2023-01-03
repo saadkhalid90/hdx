@@ -89,7 +89,7 @@ const Approach = ({loadedCommonData, loadedApproachData, setApproachDataLoaded})
               </p>
             </VideoAndContent>
           </div>
-          <div className={styles.footer}>
+          <div className={styles.bottom_stick}>
             <Footer loadedCommonData={loadedCommonData}/>
           </div>
         </div>

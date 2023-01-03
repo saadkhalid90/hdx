@@ -1,6 +1,7 @@
 import Landing from "../components/landing";
 import Intro from "../components/intro";
 import PhotoAndContent from "../components/photoAndContent";
+import DemoForm from "../components/demoForm";
 import IconRow from "../components/iconRow";
 import StatBox from "../components/statBox";
 import Footer from "../components/footer";
@@ -110,7 +111,7 @@ const Home = ({ loadedHomeData, setHomeDataLoaded, loadedCommonData}) => {
             <IconRow iconsArr={iconsArr} />
           </PhotoAndContent>
         </div>
-        <div className={styles.footer}>
+        <div className={styles.bottom_stick}>
           <Footer loadedCommonData={loadedCommonData} />
         </div>
       </div>

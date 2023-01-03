@@ -1,8 +1,8 @@
 import TextField from "@mui/material/TextField";
 import { style } from "@mui/system";
 import styles from "./css-modules/contactForm.module.css";
-import { useEffect, useState } from 'react';
-import * as emailjs from 'emailjs-com';
+import { useEffect, useState } from "react";
+import * as emailjs from "emailjs-com";
 import Fade from "@mui/material/Fade";
 
 import { FaInstagram } from "react-icons/fa";
@@ -22,13 +22,11 @@ const ContactForm = ({loadedCommonData}) => {
   const [successFul, setSuccessFul] = useState(false);
 
   function setValueState(event, id) {
-    if (id === 'message') {
+    if (id === "message") {
       setMessage(event.target.value);
-    }
-    else if (id === 'subject') {
+    } else if (id === "subject") {
       setSubject(event.target.value);
-    }
-    else if (id === 'fname') {
+    } else if (id === "fname") {
       setFName(event.target.value);
     }
     else if (id === 'email') {
@@ -37,8 +35,9 @@ const ContactForm = ({loadedCommonData}) => {
   }
 
   useEffect(() => {
-    emailjs.init('xrS15Rz9UYNUR-bpr');
+    emailjs.init("xrS15Rz9UYNUR-bpr");
   }, []);
+
 
   function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -50,8 +49,7 @@ const ContactForm = ({loadedCommonData}) => {
     if (message === '' || subject === '' || fName === '' || email === '') {
       setIncompleteErr(true);
       setSuccessFul(false);
-    }
-    else {
+    } else {
       setDisableInputs(true);
       if (validateEmail(email)) {
         let templateParams = {
@@ -78,23 +76,27 @@ const ContactForm = ({loadedCommonData}) => {
   }
 
   function sendEmail(templateParams) {
-    emailjs.send(
-      'service_8c2zize',
-      'template_ftl2lma',
-      templateParams,
-      'xrS15Rz9UYNUR-bpr',
-    ).then(function(response) {
+    emailjs
+      .send(
+        "service_8c2zize",
+        "template_ftl2lma",
+        templateParams,
+        "xrS15Rz9UYNUR-bpr"
+      )
+      .then(
+        function (response) {
           resetForm();
           setIncompleteErr(false);
           setSuccessFul(true);
           setDisableInputs(false);
-    }, function(error) {
+        },
+        function (error) {
           setIncompleteErr(true);
           setSuccessFul(false);
           setDisableInputs(false);
-    });
+        }
+      );
   }
-
 
   return (
     <div className={styles.formContain} style={{ marginLeft: "20px" }}>
@@ -108,11 +110,15 @@ const ContactForm = ({loadedCommonData}) => {
             label: { color: "white" },
             "& .MuiInput-underline::before": { borderBottomColor: "white" },
             "& .MuiInput-underline::after": { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::before" : { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" }
+            "&:hover .MuiInput-underline::before": {
+              borderBottomColor: "white",
+            },
+            "&:hover .MuiInput-underline::after": {
+              borderBottomColor: "white",
+            },
           }}
-          onChange={(event) => setValueState(event, 'fname')} 
-          required 
+          onChange={(event) => setValueState(event, "fname")}
+          required
           disabled={disableInputs}
         />
         <TextField
@@ -124,8 +130,12 @@ const ContactForm = ({loadedCommonData}) => {
             label: { color: "white" },
             "& .MuiInput-underline::before": { borderBottomColor: "white" },
             "& .MuiInput-underline::after": { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::before" : { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" }
+            "&:hover .MuiInput-underline::before": {
+              borderBottomColor: "white",
+            },
+            "&:hover .MuiInput-underline::after": {
+              borderBottomColor: "white",
+            },
           }}
           onChange={(event) => setValueState(event, 'email')} 
           required 
@@ -142,11 +152,15 @@ const ContactForm = ({loadedCommonData}) => {
             label: { color: "white" },
             "& .MuiInput-underline::before": { borderBottomColor: "white" },
             "& .MuiInput-underline::after": { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::before" : { borderBottomColor: "white" },
-            "&:hover .MuiInput-underline::after" : { borderBottomColor: "white" },
+            "&:hover .MuiInput-underline::before": {
+              borderBottomColor: "white",
+            },
+            "&:hover .MuiInput-underline::after": {
+              borderBottomColor: "white",
+            },
           }}
-          onChange={(event) => setValueState(event, 'subject')} 
-          required 
+          onChange={(event) => setValueState(event, "subject")}
+          required
           disabled={disableInputs}
         />
       </div>
@@ -176,8 +190,8 @@ const ContactForm = ({loadedCommonData}) => {
               },
             },
           }}
-          onChange={(event) => setValueState(event, 'message')} 
-          required 
+          onChange={(event) => setValueState(event, "message")}
+          required
           disabled={disableInputs}
         />
       </div>
@@ -204,6 +218,5 @@ const ContactForm = ({loadedCommonData}) => {
     </div>
   );
 };
-
 
 export default ContactForm;

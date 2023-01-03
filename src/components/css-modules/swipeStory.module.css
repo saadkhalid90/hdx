@@ -317,3 +317,22 @@
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 40em) {
+  .story_contain {
+    height: 75vh;
+  }
+
+  .story_left {
+    display: none;
+  }
+
+  .story_right {
+    flex-basis: 100%;
+  }
+
+  .muscle_contain {
+    width: 60%;
+    height: calc(100vw * 0.5191 * 0.6);
+  }
+}
