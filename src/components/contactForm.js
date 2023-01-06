@@ -202,7 +202,7 @@ const ContactForm = ({loadedCommonData}) => {
       </div>
 
       <div className={styles.flexed_buttons}>
-        <div onClick={() => submitContactForm()} role="button" aria-pressed="false" tabindex="0" className={styles.submit_button}>
+        <div onClick={() => submitContactForm()} role="button" aria-pressed="false" tabIndex="0" className={styles.submit_button}>
           <p>Submit</p>
         </div>
 

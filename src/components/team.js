@@ -19,7 +19,7 @@ const Team = ({desc, team, board}) => {
         <h3 className={`${styles.teamHeader} loveloLightTxt`}>Our Team</h3>
         <div className={styles.teamRows}>
           {team.length > 0 && team.map((teamMember, index) => {
-            return  <div key={teamMember.name + index} className={styles.teamRow}>
+            return  <div key={index} className={styles.teamRow}>
               <h4 className={styles.teamMember}>{teamMember.title}</h4>
               <div className={styles.separator} />
               <p className={styles.teamDesig}>{teamMember.teamMemberData.designation}</p>
@@ -32,7 +32,7 @@ const Team = ({desc, team, board}) => {
         <h3 className={`${styles.teamHeader} loveloLightTxt`}>Scientific Advisory Board</h3>
         <div className={styles.teamRows}>
           {board.length > 0 && board.map((teamMember, index) => {
-            return  <div key={teamMember.name + index} className={styles.teamRow}>
+            return  <div key={index} className={styles.teamRow}>
               <h4 className={styles.teamMember}>{teamMember.title}</h4>
             </div>
           })}
