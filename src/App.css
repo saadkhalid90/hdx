@@ -29,6 +29,7 @@ html {
 .paraInv {
   color: white;
   font-size: 1.2rem;
+  white-space: pre-line;
 }
 
 .landingSubtitle {
@@ -36,6 +37,8 @@ html {
   margin-left: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 1em;
+  white-space: pre-line;
 }
 
 .uppercase {
@@ -54,24 +57,56 @@ html {
   margin-bottom: 15px;
 }
 
-.Mui-focused {
-  color: #f3be6c !important;
+.MuiInputLabel-root.Mui-disabled {
+  color: #e0e0e0 !important;
 }
 
-.Mui-focused fieldset {
-  border-color: #f3be6c !important;
+.MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(255 255 255 / 78%) !important;
 }
 
-.MuiOutlinedInput-root:hover fieldset {
-  border-color: #f3be6c !important;
+.MuiInputBase-root.Mui-disabled, .MuiOutlinedInput-input.Mui-disabled {
+  -webkit-text-fill-color: rgb(255 255 255 / 58%) !important;
 }
 
-.MuiInput-underline:hover::before {
-  border-bottom-color: #f3be6c !important;
+@media screen and (min-width: 900px) and (max-height: 650px) {
+  .landingSubtitle {
+    font-size: 0.95em;
+  }
+
+  .paraInv {
+    font-size: 1.15rem;
+  }
+
+  .MuiFormLabel-root {
+    font-size: 15px !important;
+  }
+
+  .MuiInputBase-root {
+    font-size: 15px !important;
+  }
 }
 
-.MuiInput-underline:hover::after {
-  border-bottom-color: #f3be6c !important;
+@media screen and (min-width: 900px) and (max-height: 500px) {
+  .landingSubtitle {
+    font-size: 0.90em;
+  }
+
+  .paraInv {
+    font-size: 1rem;
+  }
+
+  .MuiFormLabel-root {
+    font-size: 13px !important;
+  }
+
+  .MuiInputBase-root {
+    font-size: 13px !important;
+  }
 }
 
-
+@media screen and (max-width: 40em){
+  .paraInv {
+    font-size: 0.9rem;
+  }
+}

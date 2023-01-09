@@ -19,7 +19,6 @@
 
 .iconDesc {
   position: relative;
-  z-index: 2;
   transform: translateX(25px);
 }
 
@@ -33,6 +32,27 @@
   background-color: #F3BE6C;
   border-radius: 2px;
   transform: translateX(-25px) rotate(45deg) ;
-  z-index: 1;
+}
+
+@media screen and (min-width: 900px) and (max-height: 650px) {
+  .iconImg {
+    width: 70px;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-height: 500px) {
+  .iconImg {
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .iconImg {
+    width: 50px;
+  }
+
+  .iconDesc {
+    font-size: 0.9rem;
+  }
 }
 
