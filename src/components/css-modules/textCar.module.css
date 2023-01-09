@@ -19,3 +19,9 @@
     font-size: 1.1rem;
   }
 }
+
+@media screen and (min-width: 1800px) and (min-height: 1000px) {
+  .carH3 {
+    font-size: 2rem;
+  }
+}

@@ -33,3 +33,9 @@
     padding: 25px;
   }
 }
+
+@media screen and (min-width: 1800px) and (min-height: 1000px) {
+  .map_container {
+    height: 525px;
+  }
+}

@@ -64,12 +64,30 @@
   }
 }
 
+@media screen and (max-width: 65em) {
+  .content_para {
+    font-size: 1.10rem;
+  }
+}
+
+@media screen and (max-width: 52em) {
+  .content_para {
+    font-size: 1.05rem;
+  }
+}
+
 @media screen and (max-width: 40em) {
   .content_para {
     font-size: 0.9rem;
   }
   .bottom_stick {
     position: relative;
+  }
+}
+
+@media screen and (min-width: 1800px) and (min-height: 1000px) {
+  .content_para {
+    font-size: 1.42rem;
   }
 }
 

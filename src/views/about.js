@@ -13,6 +13,8 @@ import axios from "axios";
 const About = ({loadedCommonData, loadedAboutData, setAboutDataLoaded}) => {
 
   useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/about" });
+    window.scrollTo(0,0);
     if (!loadedAboutData) {
       axios({
         url: "https://wordpress.haystack-dx.com/graphql",

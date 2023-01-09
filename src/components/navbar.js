@@ -39,7 +39,10 @@ const Navbar = ({}) => {
         </Link>
         <Link to ={'/contact'} style={{textDecoration: 'none'}}>
           <li className={styles.navButtonItem}>
-            <div className={styles.navButton}>Contact</div>
+            <div className={styles.navButton}>
+              <div className={styles.button_animation_div}></div>
+              <span>Contact</span>
+            </div>
           </li>        
         </Link>
       </ul>
@@ -48,7 +51,7 @@ const Navbar = ({}) => {
       </div>
 
       <Fade in={mobileMenuOpen}>
-        <div className={styles.mobile_nav_container} style={{backgroundImage: `url(${bgImg})`}}>
+        <div className={styles.mobile_nav_container} style={{backgroundImage: `url(${bgImg})`, height: window.innerHeight}}>
           <div className={`${styles.mobileMenuIcon}  ${styles.menu_icon_close}`} onClick={() => setMobileMenuOpen(false)}>
             <IoClose className={`${styles.menu_icon}`}/>
           </div>

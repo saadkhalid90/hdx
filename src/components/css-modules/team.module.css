@@ -93,6 +93,20 @@
   }
 }
 
+@media screen and (max-width: 65em) {
+  .team_contain {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media screen and (max-width: 52em) {
+  .team_contain {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
 @media screen and (max-width: 40em) {
   .team_contain {
     padding-top: 50px;
@@ -124,5 +138,27 @@
 
   .separator {
     margin: 5px 5px;
+  }
+}
+
+@media screen and (min-width: 1800px) and (min-height: 1000px) {
+  .team_intro {
+    font-size: 1.65rem;
+  }
+  .teamHeader {
+    font-size: 2.6rem;
+  }
+  .teamRow {
+    width: 55%;
+  }
+  .teamMember {
+    font-size: 1.6rem;
+  }
+
+  .teamDesig {
+    font-size: 1.2rem;
+  }
+  .team_contain {
+    padding-bottom: 80px;
   }
 }

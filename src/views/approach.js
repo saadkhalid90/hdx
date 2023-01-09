@@ -24,6 +24,8 @@ const Approach = ({loadedCommonData, loadedApproachData, setApproachDataLoaded})
 
 
   useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/approach" });
+    window.scrollTo(0,0);
     if (!loadedApproachData) {
       axios({
         url: "https://wordpress.haystack-dx.com/graphql",
@@ -50,25 +52,10 @@ const Approach = ({loadedCommonData, loadedApproachData, setApproachDataLoaded})
           pageContent: result.data.data.approachPageData.approachPageContent,
         }; 
         setApproachDataLoaded(data);
-        scrollState();
       });
     }
   }, []);
-
-  const scrollState = () => {
-    window.onwheel = function(e) {
-      if (window.scrollY > swipeRef.current.getBoundingClientRect().top + window.innerHeight) {
-        if (!needleRef.current.classList.contains(swipe_styles.needle_animate)) {
-          syringeRef.current.classList.add(swipe_styles.syringe_animate);
-          needleRef.current.classList.add(swipe_styles.needle_animate);
-          step1Ref.current.classList.add(swipe_styles.step_one_animate);
-          step2Ref.current.classList.add(swipe_styles.step_two_animate);
-          step3Ref.current.classList.add(swipe_styles.step_three_animate);
-        }
-      }
-    }
-  }
-
+  
   return (
     <>
     {!loadedApproachData || !loadedCommonData ? 

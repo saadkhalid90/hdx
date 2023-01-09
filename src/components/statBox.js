@@ -1,17 +1,15 @@
 import styles from "./css-modules/statBox.module.css";
 import { useEffect, useState } from "react";
 
-const StatBox = ({statisticsHeading, statisticsHeadingHighlight, stats}) => {
+const StatBox = ({statisticsHeading, statisticsHeadingHighlight, stats, setHomeStats, homeStats}) => {
 
-  const [splitArrays, setSplitArrays] = useState([]);
 
   useEffect(() => {
     let arr = splitArray(stats.reverse(), 3);
+  //  console.log(stats);
     if (arr.length > 0) {
-      console.log(arr);
-      setSplitArrays(arr);
+      setHomeStats(arr);
     }
-    console.log(splitArrays);
   }, []);
 
   function splitArray(array, pocketLength) {
@@ -31,36 +29,16 @@ const StatBox = ({statisticsHeading, statisticsHeadingHighlight, stats}) => {
         </span>
       </p>
       <div className={styles.statBox}>
-        <div className={styles.statRow}>
-          <div className={styles.statItem}>
-            <h3 className={styles.stat}>20 million</h3>
-            <p className={`${styles.statType} latoTxt`}>Peripheral Neuropathy</p>
-          </div>
-          <div className={styles.statItem}>
-            <h3 className={styles.stat}>20 million</h3>
-            <p className={`${styles.statType} latoTxt`}>Nerve Root Problem</p>
-          </div>
-          <div className={styles.statItem}>
-            <h3 className={styles.stat}>16 million</h3>
-            <p className={`${styles.statType} latoTxt`}>Radiculopathy</p>
-          </div>
-        </div>
-        <div className={styles.statRow}>
-          <div className={styles.statItem}>
-            <h3 className={styles.stat}>8 million</h3>
-            <p className={`${styles.statType} latoTxt`}>
-              Carpal Tunnel Syndrome & other neuropathies
-            </p>
-          </div>
-          <div className={styles.statItem}>
-            <h3 className={styles.stat}>2 million</h3>
-            <p className={`${styles.statType} latoTxt`}>Primary Myopathies</p>
-          </div>
-          <div className={styles.statItem}>
-            <h3 className={styles.stat}>30,000</h3>
-            <p className={`${styles.statType} latoTxt`}>Lou Gehrig’s Disease</p>
-          </div>
-        </div>
+        {homeStats.length > 0 && homeStats.map((split, index) => {
+            return <div className={styles.statRow} key={'splitArr' + index}>
+              {split.length > 0 && split.map((stat, index) => {
+                return <div className={styles.statItem} key={index}>
+                  <h3 className={styles.stat}>{stat.node.statistic.statistic}</h3>
+                  <p className={`${styles.statType} latoTxt`}>{stat.node.title}</p>
+                </div>
+              })}
+            </div>
+        })}
       </div>
     </section>
   );

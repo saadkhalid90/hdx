@@ -137,6 +137,23 @@
   }
 }
 
+@media screen and (max-width: 65em) {
+  .footerInfoItem {
+    width: 45%;
+  }
+  .footerInfoRow {
+    padding-left: 160px;
+    padding-right: 160px;
+  }
+}
+
+@media screen and (max-width: 52em) {
+  .footerInfoRow {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
 @media screen and (max-width: 40em) {
   .footerContain {
     height: 480px;
@@ -179,5 +196,26 @@
 
   .copyright_info {
     font-size: 0.60rem;
+  }
+}
+
+@media screen and (min-width: 1800px) and (min-height: 1000px) {
+  .footerLogo {
+    width:300px;
+  }
+  .footerInfoItemIconContain {
+    font-size: 1.7em;
+  }
+  
+  .footerInfoItemText {
+    font-size: 1.3rem;
+  }
+
+  .footerSocialsRow {
+    font-size: 2rem;
+  }
+
+  .copyright_info {
+    font-size: 1.1rem;
   }
 }

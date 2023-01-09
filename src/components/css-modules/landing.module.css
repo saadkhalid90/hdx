@@ -32,15 +32,17 @@
   background-color: #F3BE6C;
   opacity: 0.3;
   border-radius: 15px;
-  transform: rotate(45deg) translateX(20px);
+  transform: rotate(45deg) translateX(15px) translateY(-20px);
   z-index: 1;
+  transition: all 4s;
 }
+
 
 .landingTitle {
   text-transform: uppercase;
   font-size: 3rem;
   color: #fff;
-  margin: 25px 0px;
+  margin: 15px 0px;
   z-index: 2;
 }
 
@@ -70,9 +72,27 @@
   }
 }
 
+@media screen and (max-width: 65em) {
+  .landingTextContain {
+    width: 70%;
+    padding-left: 15%;
+    padding-left: 75px;
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 52em) {
+  .landingTextContain {
+    width: 80%;
+    padding-left: 50px;
+    padding-bottom: 40px;
+  }
+}
+
 @media screen and (max-width: 40em) {
   .landingContain {
     background-position: right;
+    z-index: 2;
   }
   
   .landingTextContain {
@@ -88,5 +108,11 @@
 
   .landingSubtitleContain {
     font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1800px) and (min-height: 1000px) {
+  .landingTitle {
+    font-size: 3.6rem;
   }
 }

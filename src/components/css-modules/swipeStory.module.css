@@ -52,23 +52,25 @@
   height: calc(45vw * 0.5191 * 0.6);
 }
 
+.steps_txtParent {
+  position: relative;
+}
+
 .step_contain {
   display: flex;
   margin: 20px 80px;
 }
 
 .step_contain:nth-child(2) {
-  position: relative;
+  position: absolute;
+  opacity: 0;
+  top: 0;
 }
 
 .step_contain:nth-child(3) {
   position: absolute;
   opacity: 0;
-}
-
-.step_contain:nth-child(4) {
-  position: absolute;
-  opacity: 0;
+  top: 0;
 }
 
 .step_one_animate {
@@ -320,7 +322,7 @@
 
 @media screen and (max-width: 40em) {
   .story_contain {
-    height: 75vh;
+    height: 85vh;
   }
 
   .story_left {
@@ -336,5 +338,15 @@
   .muscle_contain {
     width: 60%;
     height: calc(100vw * 0.5191 * 0.6);
+  }
+}
+
+@media screen and (min-width: 1800px) and (min-height: 1000px) {
+  .step_number {
+    font-size: 4rem;
+  }
+  
+  .step_desc {
+    font-size: 1.5rem;
   }
 }

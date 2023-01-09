@@ -6,6 +6,7 @@ import Contact from './views/contact';
 import {Routes, Route} from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState  } from 'react';
+import ReactGA from "react-ga4";
 
 function App() {
 
@@ -13,8 +14,10 @@ function App() {
   const [loadedApproachData, setApproachDataLoaded] = useState(null);
   const [loadedAboutData, setAboutDataLoaded] = useState(null);
   const [loadedCommonData, setCommonDataLoaded] = useState(null);
+  const [homeStats, setHomeStats] = useState([]);
 
   useEffect(() => {
+    ReactGA.initialize("G-BD2NKRBE0G");
     if (!loadedCommonData) {
       axios({
         url: "https://wordpress.haystack-dx.com/graphql",
@@ -56,7 +59,7 @@ function App() {
       <Routes>
         <Route path="/" 
           element={
-            <Home loadedHomeData={loadedHomeData} setHomeDataLoaded={setHomeDataLoaded} loadedCommonData={loadedCommonData}/>
+            <Home loadedHomeData={loadedHomeData} setHomeDataLoaded={setHomeDataLoaded} loadedCommonData={loadedCommonData} setHomeStats={setHomeStats} homeStats={homeStats}/>
           }
         />
         <Route path="/approach" 

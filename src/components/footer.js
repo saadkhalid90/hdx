@@ -9,11 +9,12 @@ import {
 } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { ImLocation } from "react-icons/im";
-
+import Fade from "@mui/material/Fade";
 import styles from "./css-modules/footer.module.css";
 
 const Footer = ({loadedCommonData}) => {
   return (
+    <Fade in={true}>
     <section className={styles.footerContain}>
       <img className={styles.footerLogo} src={logo} />
       <div className={styles.footerInfoRow}>
@@ -56,6 +57,7 @@ const Footer = ({loadedCommonData}) => {
         Copyright {new Date().getFullYear()} Haystack Diagnostics. All rights reserved.{" "}
       </p>
     </section>
+    </Fade>
   );
 };
 

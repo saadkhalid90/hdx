@@ -9,6 +9,10 @@ html {
   box-sizing: inherit;
 }
 
+html, body {
+  overflow-x: clip;
+}
+
 @font-face {
   font-family: loveloLight;
   src: url(./resources/fonts/Lovelo/Lovelo\ Black.otf) format("opentype");
@@ -106,7 +110,20 @@ html {
 }
 
 @media screen and (max-width: 40em){
+  .size_1-1rem {
+    font-size: 0.98rem;
+  }
   .paraInv {
     font-size: 0.9rem;
   }
 }
+
+@media screen and (min-width: 1800px) and (min-height: 1000px) {
+  .landingSubtitle {
+    font-size: 1.45em;
+  }
+  .paraInv {
+    font-size: 1.65rem;
+  }
+}
+

@@ -10,7 +10,6 @@ export default class TextCar extends Component {
     const settings = {
       dots: true,
       infinite: true,
-      speed: 500,
       autoplay: true,
       speed: 1000,
       slidesToShow: 1,
@@ -20,8 +19,8 @@ export default class TextCar extends Component {
       <div className={`${styles.carRoot} latoTxt`}>
         {this.props.carousel.length > 0 && <Slider {...settings}>
           {this.props.carousel.map((text, index) => {
-            return <div>
-              <h3>Cutting edge technology for neuromuscular assessment</h3>
+            return <div key={index}>
+              <h3 className={styles.carH3}>{text}</h3>
             </div>
           })}
         </Slider>}

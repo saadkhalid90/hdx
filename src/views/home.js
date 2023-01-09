@@ -25,9 +25,11 @@ const iconsArr = [
   { img: icon_3, desc: "Work" },
 ];
 
-const Home = ({ loadedHomeData, setHomeDataLoaded, loadedCommonData}) => {
+const Home = ({ loadedHomeData, setHomeDataLoaded, loadedCommonData, setHomeStats, homeStats}) => {
 
   useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/" });
+    window.scrollTo(0,0);
     if (!loadedHomeData) {
       axios({
         url: "https://wordpress.haystack-dx.com/graphql",
@@ -54,10 +56,12 @@ const Home = ({ loadedHomeData, setHomeDataLoaded, loadedCommonData}) => {
                 }
               }
               allHomeStatistics {
-                nodes {
-                  title
-                  statistic {
-                    statistic
+                edges {
+                    node {
+                    title
+                    statistic {
+                      statistic
+                    }      
                   }
                 }
               }
@@ -65,13 +69,15 @@ const Home = ({ loadedHomeData, setHomeDataLoaded, loadedCommonData}) => {
           `,
         },
       }).then((result) => {
-        let data = {
-          title: result.data.data.homePageData.title,
-          carouselStats: result.data.data.homePageData.homePageContent.carouselFields.split("-"),
-          homeContent: result.data.data.homePageData.homePageContent,
-          stats: result.data.data.allHomeStatistics.nodes, 
-        };
-        console.log(data);
+        let data = {};
+        if (result.data.data.allHomeStatistics.edges.length > 0) {
+          data = {
+            title: result.data.data.homePageData.title,
+            carouselStats: result.data.data.homePageData.homePageContent.carouselFields.split("-"),
+            homeContent: result.data.data.homePageData.homePageContent,
+            stats: result.data.data.allHomeStatistics.edges, 
+          };
+        }
         setHomeDataLoaded(data);
       });
     }
@@ -103,6 +109,8 @@ const Home = ({ loadedHomeData, setHomeDataLoaded, loadedCommonData}) => {
             statisticsHeading={loadedHomeData.homeContent.statisticsHeading}
             statisticsHeadingHighlight={loadedHomeData.homeContent.statisticsHeadingHighlight}
             stats={loadedHomeData.stats}
+            setHomeStats={setHomeStats}
+            homeStats={homeStats}
           />
           <PhotoAndContent orientation="left" bgImg={loadedHomeData.homeContent.sectionTwoImage.mediaItemUrl}>
             <p className={`${styles.content_para} latoTxt`}>
