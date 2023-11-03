@@ -115,4 +115,7 @@
   .landingTitle {
     font-size: 3.6rem;
   }
+  .landingTextContain {
+    padding-bottom: 145px;
+  }
 }

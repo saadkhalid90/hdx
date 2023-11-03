@@ -110,7 +110,7 @@
 
 .syringe {
   width: 6%;
-  left: 18%;
+  left: 30%;
 /*  -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
@@ -147,27 +147,27 @@
   }
   25%  {
     transform: rotate(0deg);
-    top: 16%;
+    top: 14%;
   }
   37.5%  {
     transform: rotate(0deg);
-    top: 16%;
+    top: 14%;
   }
   50%  {
     transform: rotate(0deg);
-    top: 16%;
+    top: 14%;
   }
   62.5%  {
     transform: rotate(0deg);
-    top: 18.5%;
+    top: 16.2%;
   }
   75%  {
     transform: rotate(0deg);
-    top: 18.5%;
+    top: 16.2%;
   }
   87.5%  {
     transform: rotate(0deg);
-    top: 18.5%;
+    top: 16.2%;
   }
   100% {    
     transform: rotate(45deg);
@@ -217,13 +217,13 @@
     top: -45%;
   }
   62.5%  {
-    top: -17%;
+    top: -22%;
   }
   75%  {
-    top: -17%;
+    top: -22%;
   }
   87.5%  {
-    top: -17%;
+    top: -22%;
   }
   100% {    
     top: -120%;

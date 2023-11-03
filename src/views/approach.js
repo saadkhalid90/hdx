@@ -1,6 +1,5 @@
 import Landing from "../components/landing";
 import SwipeStory from "../components/swipeStory";
-import swipe_styles from "../components/css-modules/swipeStory.module.css";
 import Footer from "../components/footer";
 import styles from "./css-modules/home.module.css";
 import approachBG from "../resources/landing/landingBG-2.jpg";
@@ -13,7 +12,6 @@ import axios from "axios";
 
 const Approach = ({loadedCommonData, loadedApproachData, setApproachDataLoaded}) => {
   const [step, setStep] = useState(1);
-  const [animate, setAnimate] = useState(false);
 
   const swipeRef = useRef();
   const syringeRef = useRef();

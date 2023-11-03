@@ -28,7 +28,7 @@ const Navbar = ({}) => {
   return (
     <nav className={styles.navContain}>
       <Link to ={'/'}>
-        <img className={styles.logo} src={logo}/>
+        <img alt="" className={styles.logo} src={logo}/>
       </Link>
       <ul className={styles.navButtons}>
         <Link to ={'/about'} style={{textDecoration: 'none'}}>

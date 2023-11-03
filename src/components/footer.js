@@ -12,11 +12,17 @@ import { ImLocation } from "react-icons/im";
 import Fade from "@mui/material/Fade";
 import styles from "./css-modules/footer.module.css";
 
+import copyright from "../resources/legal/Copyright and Trademark_010123.pdf";
+import fcoi from "../resources/legal/HDxFCOIPolicy.pdf";
+import privacy from "../resources/legal/Privacy policy_010123.pdf";
+import terms from "../resources/legal/Terms of Use_010123.pdf";
+
+
 const Footer = ({loadedCommonData}) => {
   return (
     <Fade in={true}>
     <section className={styles.footerContain}>
-      <img className={styles.footerLogo} src={logo} />
+      <img alt="" className={styles.footerLogo} src={logo} />
       <div className={styles.footerInfoRow}>
         <div className={styles.footerInfoItem}>
           <div className={styles.footerInfoItemIconContain}>
@@ -56,6 +62,12 @@ const Footer = ({loadedCommonData}) => {
       <p className={styles.copyright_info}>
         Copyright {new Date().getFullYear()} Haystack Diagnostics. All rights reserved.{" "}
       </p>
+      <div className={styles.flexed_footer_buttons}>
+        <a href={copyright} target="_blank" rel="noreferrer" className={`${styles.copyright_info} ${styles.button_terms}`}>Copyright Policy</a>
+        <a href={privacy} target="_blank" rel="noreferrer" className={`${styles.copyright_info} ${styles.button_terms}`}>Privacy Policy</a>
+        <a href={terms} target="_blank" rel="noreferrer" className={`${styles.copyright_info} ${styles.button_terms}`}>Terms of Use</a>
+        <a href={fcoi} target="_blank" rel="noreferrer" className={`${styles.copyright_info} ${styles.button_terms}`}>Conflict of Interest Policy</a>
+      </div>
     </section>
     </Fade>
   );

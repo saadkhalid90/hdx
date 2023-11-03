@@ -1,5 +1,5 @@
 import styles from "./css-modules/statBox.module.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const StatBox = ({statisticsHeading, statisticsHeadingHighlight, stats, setHomeStats, homeStats}) => {
 
